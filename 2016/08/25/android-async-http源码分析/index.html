@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>android-async-http源码分析 | 洛枫的天空</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="android,笔记,源码">
+    <meta name="description" content="android-async-http源码分析今天开始学习android-async-http的源码了 构造方法一共有五种构造方法，前三种都是调用这个有三个参数的，其余三个都是对这三个参数的其中几个或所有做固定赋值 12345678910/* Creates new AsyncHttpClient using given">
+<meta name="keywords" content="android,笔记,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android-async-http源码分析">
+<meta property="og:url" content="http://www.luofeng.com/2016/08/25/android-async-http源码分析/index.html">
+<meta property="og:site_name" content="洛枫的天空">
+<meta property="og:description" content="android-async-http源码分析今天开始学习android-async-http的源码了 构造方法一共有五种构造方法，前三种都是调用这个有三个参数的，其余三个都是对这三个参数的其中几个或所有做固定赋值 12345678910/* Creates new AsyncHttpClient using given params @param fixNoHttpResponseExceptio">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-18T09:13:54.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android-async-http源码分析">
+<meta name="twitter:description" content="android-async-http源码分析今天开始学习android-async-http的源码了 构造方法一共有五种构造方法，前三种都是调用这个有三个参数的，其余三个都是对这三个参数的其中几个或所有做固定赋值 12345678910/* Creates new AsyncHttpClient using given params @param fixNoHttpResponseExceptio">
+    
+        <link rel="alternate" type="application/atom+xml" title="洛枫的天空" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/md1.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">洛枫</h5>
+          <a href="mailto:weixia.banxia@gmail.com" title="weixia.banxia@gmail.com" class="mail">weixia.banxia@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/luofeng0xia" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/luofeng0xia" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">android-async-http源码分析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">android-async-http源码分析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-08-24T23:02:15.000Z" itemprop="datePublished" class="page-time">
+  2016-08-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#android-async-http源码分析"><span class="post-toc-number">1.</span> <span class="post-toc-text">android-async-http源码分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构造方法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">构造方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#get、post调用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">get、post调用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始异步请求"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">开始异步请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#响应处理"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">响应处理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结一下"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">总结一下</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-android-async-http源码分析"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">android-async-http源码分析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-08-24 23:02:15" datetime="2016-08-24T23:02:15.000Z"  itemprop="datePublished">2016-08-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="android-async-http源码分析"><a href="#android-async-http源码分析" class="headerlink" title="android-async-http源码分析"></a><a href="#android-async-http源码分析" title="android-async-http源码分析"></a>android-async-http源码分析</h1><p>今天开始学习android-async-http的源码了</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a><a href="#构造方法" title="构造方法"></a>构造方法</h2><p>一共有五种构造方法，前三种都是调用这个有三个参数的，其余三个都是对这三个参数的其中几个或所有做固定赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/<em>*</em></span><br><span class="line"> Creates new AsyncHttpClient using given params</span><br><span class="line"><em></em></span><br><span class="line"> <span class="doctag">@param</span> fixNoHttpResponseException 是否通过忽略ssl认证自动修复连接无响应</span><br><span class="line"><em> <span class="doctag">@param</span> httpPort                   http端口号</em></span><br><span class="line"> <span class="doctag">@param</span> httpsPort                  https端口号</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncHttpClient</span><span class="params">(<span class="keyword">boolean</span> fixNoHttpResponseException, <span class="keyword">int</span> httpPort, <span class="keyword">int</span> httpsPort)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(getDefaultSchemeRegistry(fixNoHttpResponseException, httpPort, httpsPort));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然而这个构造方法也没有具体实现，内部调用的是this(SchemeRegistry schemeRegistry)，getDefaultSchemeRegistry返回一个SchemeRegistry对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> SchemeRegistry <span class="title">getDefaultSchemeRegistry</span><span class="params">(<span class="keyword">boolean</span> fixNoHttpResponseException, <span class="keyword">int</span> httpPort, <span class="keyword">int</span> httpsPort)</span> </span>&#123;</span><br><span class="line">    …</span><br><span class="line">    SchemeRegistry schemeRegistry = <span class="keyword">new</span> SchemeRegistry();</span><br><span class="line">    schemeRegistry.register(<span class="keyword">new</span> Scheme(<span class="string">“http”</span>, PlainSocketFactory.getSocketFactory(), httpPort));</span><br><span class="line">    schemeRegistry.register(<span class="keyword">new</span> Scheme(<span class="string">“https”</span>, sslSocketFactory, httpsPort));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> schemeRegistry;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实SchemeRegistry就是对这些协议的封装，利用map存了起来，<code>http</code>、<code>https</code>这些协议名称为key，具体的Scheme类就不看了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Scheme <span class="title">register</span><span class="params">(<span class="keyword">final</span> Scheme sch)</span> </span>&#123;</span><br><span class="line">    Args.notNull(sch, <span class="string">“Scheme”</span>);</span><br><span class="line">    <span class="keyword">final</span> Scheme old = registeredSchemes.put(sch.getName(), sch);</span><br><span class="line">    <span class="keyword">return</span> old;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后回到构造方法来，内部到底怎么实现的，好长，就是初始化了一些网络请求参数，然后线程池</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncHttpClient</span><span class="params">(SchemeRegistry schemeRegistry)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    BasicHttpParams httpParams = <span class="keyword">new</span> BasicHttpParams();  <span class="comment">//默认的http请求参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置httpParams参数的内容</span></span><br><span class="line">    ConnManagerParams.setTimeout(httpParams, connectTimeout);</span><br><span class="line">    ConnManagerParams.setMaxConnectionsPerRoute(httpParams, <span class="keyword">new</span> ConnPerRouteBean(maxConnections));</span><br><span class="line">    ConnManagerParams.setMaxTotalConnections(httpParams, DEFAULT_MAX_CONNECTIONS);</span><br><span class="line"></span><br><span class="line">    HttpConnectionParams.setSoTimeout(httpParams, responseTimeout);</span><br><span class="line">    HttpConnectionParams.setConnectionTimeout(httpParams, connectTimeout);</span><br><span class="line">    HttpConnectionParams.setTcpNoDelay(httpParams, <span class="keyword">true</span>);</span><br><span class="line">    HttpConnectionParams.setSocketBufferSize(httpParams, DEFAULT_SOCKET_BUFFER_SIZE);</span><br><span class="line"></span><br><span class="line">    HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1); <span class="comment">//协议版本</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//线程安全的连接管理者</span></span><br><span class="line">    ClientConnectionManager cm = createConnectionManager(schemeRegistry, httpParams);</span><br><span class="line">    Utils.asserts(cm != <span class="keyword">null</span>, <span class="string">“Custom implementation of #createConnectionManager(SchemeRegistry, BasicHttpParams) returned null”</span>);</span><br><span class="line"></span><br><span class="line">    threadPool = getDefaultThreadPool(); <span class="comment">//得到一个线程池对象</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//一个请求的map 封装了上下文和该上下文对应的请求的Handler的集合 该Handler用来管理一个请求 比如取消请求</span></span><br><span class="line">    requestMap = Collections.synchronizedMap(<span class="keyword">new</span> WeakHashMap&lt;Context, List&lt;RequestHandle&gt;&gt;());</span><br><span class="line"></span><br><span class="line">    clientHeaderMap = <span class="keyword">new</span> HashMap&lt;String, String&gt;(); <span class="comment">//客户端请求头的一个map</span></span><br><span class="line"></span><br><span class="line">    httpContext = <span class="keyword">new</span> SyncBasicHttpContext(<span class="keyword">new</span> BasicHttpContext());</span><br><span class="line">    <span class="comment">//一个HttpClient对象</span></span><br><span class="line">    httpClient = <span class="keyword">new</span> DefaultHttpClient(cm, httpParams);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//添加一个请求拦截器，给请求Header添加gzip编码，替换重写的某些请求头参数</span></span><br><span class="line">    httpClient.addRequestInterceptor(<span class="keyword">new</span> HttpRequestInterceptor() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(HttpRequest request, HttpContext context)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!request.containsHeader(HEADER_ACCEPT_ENCODING)) &#123; <span class="comment">//添加gzip编码</span></span><br><span class="line">                request.addHeader(HEADER_ACCEPT_ENCODING, ENCODING_GZIP);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (String header : clientHeaderMap.keySet()) &#123; <span class="comment">//遍历所有的Header的键</span></span><br><span class="line">                <span class="keyword">if</span> (request.containsHeader(header)) &#123; <span class="comment">//如果请求Header里面包含这个键，就是说有自定义的Header参数</span></span><br><span class="line">                    Header overwritten = request.getFirstHeader(header); <span class="comment">//获得这个Header参数的值</span></span><br><span class="line">                    log.d(LOG_TAG,</span><br><span class="line">                            String.format(<span class="string">“Headers were overwritten! (%s | %s) overwrites (%s | %s)”</span>,</span><br><span class="line">                                    header, clientHeaderMap.get(header),</span><br><span class="line">                                    overwritten.getName(), overwritten.getValue())</span><br><span class="line">                    );</span><br><span class="line"></span><br><span class="line">                    <span class="comment">//remove the overwritten header</span></span><br><span class="line">                    request.removeHeader(overwritten); <span class="comment">//移除这个值</span></span><br><span class="line">                &#125;</span><br><span class="line">                request.addHeader(header, clientHeaderMap.get(header)); <span class="comment">//在相应键位上添加clientHeaderMap里的header参数</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对响应做拦截，对gzip做解码</span></span><br><span class="line">    httpClient.addResponseInterceptor(<span class="keyword">new</span> HttpResponseInterceptor() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(HttpResponse response, HttpContext context)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">final</span> HttpEntity entity = response.getEntity(); <span class="comment">//获得内容</span></span><br><span class="line">            <span class="keyword">if</span> (entity == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">final</span> Header encoding = entity.getContentEncoding(); <span class="comment">//获得编码方式</span></span><br><span class="line">            <span class="keyword">if</span> (encoding != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (HeaderElement element : encoding.getElements()) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (element.getName().equalsIgnoreCase(ENCODING_GZIP)) &#123; <span class="comment">//为gzip编码</span></span><br><span class="line">                        response.setEntity(<span class="keyword">new</span> InflatingEntity(entity)); <span class="comment">//解码之后重新设置内容</span></span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//做认证的，暂时没看，和上面那个唯一不同的是，它排在拦截list的第0位，应该首先处理这个？？</span></span><br><span class="line">    httpClient.addRequestInterceptor(<span class="keyword">new</span> HttpRequestInterceptor() &#123;</span><br><span class="line">        …</span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置重新请求</span></span><br><span class="line">    httpClient.setHttpRequestRetryHandler(<span class="keyword">new</span> RetryHandler(DEFAULT_MAX_RETRIES, DEFAULT_RETRY_SLEEP_TIME_MILLIS));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="get、post调用"><a href="#get、post调用" class="headerlink" title="get、post调用"></a><a href="#get、post调用" title="get、post调用"></a>get、post调用</h2><p>在new完对象之后，我们都是直接拿着去调get()、post()方法，下面就去看看，先看get()，一共有6个重载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.只有url和响应接口，调用的重载4</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RequestHandle <span class="title">get</span><span class="params">(String url, ResponseHandlerInterface responseHandler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get(<span class="keyword">null</span>, url, <span class="keyword">null</span>, responseHandler);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2.加上一个params请求参数，调用重载4，经常用这个</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RequestHandle <span class="title">get</span><span class="params">(String url, RequestParams params, ResponseHandlerInterface responseHandler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get(<span class="keyword">null</span>, url, params, responseHandler);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//3.没有params，但是多一个context，调用重载4</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RequestHandle <span class="title">get</span><span class="params">(Context context, String url, ResponseHandlerInterface responseHandler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get(context, url, <span class="keyword">null</span>, responseHandler);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//4.调用sendRequest()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RequestHandle <span class="title">get</span><span class="params">(Context context, String url, RequestParams params, ResponseHandlerInterface responseHandler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sendRequest(httpClient, httpContext, <span class="keyword">new</span> HttpGet(getUrlWithQueryString(isUrlEncodingEnabled, url, params)), <span class="keyword">null</span>, responseHandler, context);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//5.设置传入的header再调用sendRequest()</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RequestHandle <span class="title">get</span><span class="params">(Context context, String url, Header[] headers, RequestParams params, ResponseHandlerInterface responseHandler)</span> </span>&#123;</span><br><span class="line">    HttpUriRequest request = <span class="keyword">new</span> HttpGet(getUrlWithQueryString(isUrlEncodingEnabled, url, params));</span><br><span class="line">    <span class="keyword">if</span> (headers != <span class="keyword">null</span>) request.setHeaders(headers);</span><br><span class="line">    <span class="keyword">return</span> sendRequest(httpClient, httpContext, request, <span class="keyword">null</span>, responseHandler,</span><br><span class="line">            context);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//6.use this to send string/json/xml，然后再调用sendRequest()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RequestHandle <span class="title">get</span><span class="params">(Context context, String url, HttpEntity entity, String contentType, ResponseHandlerInterface responseHandler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sendRequest(httpClient, httpContext, addEntityToRequestBase(<span class="keyword">new</span> HttpGet(URI.create(url).normalize()), entity), contentType, responseHandler, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最终调用都是sendRequest()，而且方法是有返回值的，类型是RequestHandler，这个类好像在哪里见过，没错就是这<br>    <code>requestMap = Collections.synchronizedMap(new WeakHashMap&amp;lt;Context, List&amp;lt;RequestHandle&amp;gt;&amp;gt;());</code><br>在AsyncHttpClient的构造方法里，我们创建了这么一个map，里面存着以Context为键泛型为RequestHandler的list集合。再看一眼post方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> RequestHandle <span class="title">post</span><span class="params">(Context context, String url, HttpEntity entity, String contentType, ResponseHandlerInterface responseHandler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sendRequest(httpClient, httpContext, addEntityToRequestBase(<span class="keyword">new</span> HttpPost(getURI(url)), entity), contentType, responseHandler, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>嘿嘿，果然和get方法一样，最后都是调用sendRequest()，返回值也都是RequestHandler对象。先看sendRequest()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/<em>*</em></span><br><span class="line">  put一个新请求到线程池的执行队列里</span><br><span class="line"> <em></em></span><br><span class="line">  <span class="doctag">@param</span> client          就是构造方法里初始化的一个DefaultHttpClient</span><br><span class="line"> <em> <span class="doctag">@param</span> contentType     MIME body type，may be null，某些get、put方法里有这个参数</em></span><br><span class="line">  <span class="doctag">@param</span> context         Android上下文，持有这个request请求，为了cancel()</span><br><span class="line"> <em> <span class="doctag">@param</span> httpContext     HttpContext in which the request will be executed</em></span><br><span class="line">  <span class="doctag">@param</span> responseHandler 处理响应的接口</span><br><span class="line"> <em> <span class="doctag">@param</span> uriRequest      必须是HttpUriRequest的实例，封装了url和请求参数等等   </em></span><br><span class="line"> /</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> RequestHandle <span class="title">sendRequest</span><span class="params">(DefaultHttpClient client, HttpContext httpContext, HttpUriRequest uriRequest, String contentType, ResponseHandlerInterface responseHandler, Context context)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//uriRequest必须非空</span></span><br><span class="line">    <span class="keyword">if</span> (uriRequest == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">“HttpUriRequest must not be null”</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//responseHandler必须非空</span></span><br><span class="line">    <span class="keyword">if</span> (responseHandler == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">“ResponseHandler must not be null”</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//异步请求里面不能使用同步响应处理</span></span><br><span class="line">    <span class="keyword">if</span> (responseHandler.getUseSynchronousMode() &amp;&amp; !responseHandler.getUsePoolThread()) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">“Synchronous ResponseHandler used in AsyncHttpClient. You should create your response handler in a looper thread or use SyncHttpClient instead.”</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置自定义的contentType</span></span><br><span class="line">    <span class="keyword">if</span> (contentType != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (uriRequest <span class="keyword">instanceof</span> HttpEntityEnclosingRequestBase &amp;&amp; ((HttpEntityEnclosingRequestBase) uriRequest).getEntity() != <span class="keyword">null</span> &amp;&amp; uriRequest.containsHeader(HEADER_CONTENT_TYPE)) &#123;</span><br><span class="line">            log.w(LOG_TAG, <span class="string">“Passed contentType will be ignored because HttpEntity sets content type”</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            uriRequest.setHeader(HEADER_CONTENT_TYPE, contentType);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//确保以上这些都检查完并设置好之后，把uriRequest的一些参数复制给responseHandler一份</span></span><br><span class="line">    responseHandler.setRequestHeaders(uriRequest.getAllHeaders());</span><br><span class="line">    responseHandler.setRequestURI(uriRequest.getURI());</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建一个AsyncHttpRequest对象，把这个对象添加到线程池的执行队列中，创建一个RequestHandler对象</span></span><br><span class="line">    AsyncHttpRequest request = newAsyncHttpRequest(client, httpContext, uriRequest, contentType, responseHandler, context);</span><br><span class="line">    threadPool.submit(request);</span><br><span class="line">    RequestHandle requestHandle = <span class="keyword">new</span> RequestHandle(request);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//context不为空，把上面的requestHandler放到Map中去</span></span><br><span class="line">    <span class="keyword">if</span> (context != <span class="keyword">null</span>) &#123;</span><br><span class="line">        List&lt;RequestHandle&gt; requestList;</span><br><span class="line">        <span class="comment">// Add request to request map</span></span><br><span class="line">        <span class="keyword">synchronized</span> (requestMap) &#123;</span><br><span class="line">            requestList = requestMap.get(context);</span><br><span class="line">            <span class="keyword">if</span> (requestList == <span class="keyword">null</span>) &#123;</span><br><span class="line">                requestList = Collections.synchronizedList(<span class="keyword">new</span> LinkedList&lt;RequestHandle&gt;());</span><br><span class="line">                requestMap.put(context, requestList);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        requestList.add(requestHandle);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//遍历集合，如果发现有requestHandler对应的request已经消费完，则移除当前requestHandler</span></span><br><span class="line">        Iterator&lt;RequestHandle&gt; iterator = requestList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (iterator.next().shouldBeGarbageCollected()) &#123;</span><br><span class="line">                iterator.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> requestHandle; <span class="comment">//返回requestHandle</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里知道我们所有的请求最后都被封装到了AsyncHttpRequest，然后把它交给了线程池，然后再处理了下RequestHandler，并返回，下面看看这个RequestHandler</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestHandle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> WeakReference&lt;AsyncHttpRequest&gt; request;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RequestHandle</span><span class="params">(AsyncHttpRequest request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.request = <span class="keyword">new</span> WeakReference&lt;AsyncHttpRequest&gt;(request);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//用于取消当前request，就算返回true也并不一定是真的取消成功了，只是尝试去取消</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">cancel</span><span class="params">(<span class="keyword">final</span> <span class="keyword">boolean</span> mayInterruptIfRunning)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> AsyncHttpRequest _request = request.get();</span><br><span class="line">        <span class="keyword">if</span> (_request != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Looper.myLooper() == Looper.getMainLooper()) &#123;</span><br><span class="line">                <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        _request.cancel(mayInterruptIfRunning);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;).start();</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> _request.cancel(mayInterruptIfRunning);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果当前request被取消了或者完成了，则把当前request对象=null，不是引用，而是里面包裹的AsyncHttpRequest</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldBeGarbageCollected</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> should = isCancelled() || isFinished();</span><br><span class="line">        <span class="keyword">if</span> (should)</span><br><span class="line">            request.clear();</span><br><span class="line">        <span class="keyword">return</span> should;</span><br><span class="line">    &#125;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它持有一个AsyncHttpRequest对象，这个是在构造方法里面传入的，并且通过弱引用包裹，与上面的sendRequest()方法结合起来就是，在我们调用get()、post()方法发送请求时，它会把我们的一系列请求参数封装，作为一个Request对象扔给了线程池的待执行队列，然后创建一个持有当前Request对象的RequestHandler，并返回给调用者。请求的步骤大概就是这样。</p>
+<h2 id="开始异步请求"><a href="#开始异步请求" class="headerlink" title="开始异步请求"></a><a href="#开始异步请求" title="开始异步请求"></a>开始异步请求</h2><p>首先，AsyncHttpRequest实现了Runnable接口，现在先看看构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncHttpRequest</span><span class="params">(AbstractHttpClient client, HttpContext context, HttpUriRequest request, ResponseHandlerInterface responseHandler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.client = Utils.notNull(client, <span class="string">“client”</span>);</span><br><span class="line">    <span class="keyword">this</span>.context = Utils.notNull(context, <span class="string">“context”</span>);</span><br><span class="line">    <span class="keyword">this</span>.request = Utils.notNull(request, <span class="string">“request”</span>);</span><br><span class="line">    <span class="keyword">this</span>.responseHandler = Utils.notNull(responseHandler, <span class="string">“responseHandler”</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就是判断了一下参数是否为空然后赋值，下面就去看它的run方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//判断是否取消了，取消则直接返回</span></span><br><span class="line">    <span class="keyword">if</span> (isCancelled()) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断该Request是否已经准备执行，避免多次执行请求</span></span><br><span class="line">    <span class="keyword">if</span> (!isRequestPreProcessed) &#123;</span><br><span class="line">        isRequestPreProcessed = <span class="keyword">true</span>;</span><br><span class="line">        onPreProcessRequest(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给调用者发送一个准备开始的消息</span></span><br><span class="line">    responseHandler.sendStartMessage();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//开始请求并尝试重新请求</span></span><br><span class="line">        makeRequestWithRetries();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isCancelled()) &#123;</span><br><span class="line">            <span class="comment">//没有被取消就发送错误消息</span></span><br><span class="line">            responseHandler.sendFailureMessage(<span class="number">0</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, e);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            AsyncHttpClient.log.e(<span class="string">“AsyncHttpRequest”</span>, <span class="string">“makeRequestWithRetries returned error”</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//发送完成消息</span></span><br><span class="line">    responseHandler.sendFinishMessage();</span><br><span class="line">    …</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置完成状态</span></span><br><span class="line">    isFinished = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开始请求前给调用者发送了一个开始的消息，然后开始请求，如果请求出错，发送了一个错误的消息，完成后也发送了一个完成的消息，这是整个流程，下面来看看，它是怎么请求的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">makeRequestWithRetries</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> retry = <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">//在AsyncHttpClient的构造方法里我们设置了这么一个东东</span></span><br><span class="line">    HttpRequestRetryHandler retryHandler = client.getHttpRequestRetryHandler();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (retry) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                makeRequest(); <span class="comment">//终于要发送请求了吗</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            …各种捕获异常，抛异常</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好像还是没有开始请求，接着往里面看</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">makeRequest</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    …</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 做了下判断，更新Header</span></span><br><span class="line">    <span class="keyword">if</span> (responseHandler <span class="keyword">instanceof</span> RangeFileAsyncHttpResponseHandler) &#123;</span><br><span class="line">        ((RangeFileAsyncHttpResponseHandler) responseHandler).updateRequestHeaders(request);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 真正的请求在这里</span></span><br><span class="line">    HttpResponse response = client.execute(request, context);</span><br><span class="line">    …</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发送了一个处理的消息</span></span><br><span class="line">    responseHandler.sendResponseMessage(response);</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>真正的请求开始了，虽然还没见着方法体，可以看到这里根据传入的responseHandler的不同，要做一个响应Header的处理，然后开始请求，然后把返回的response交给responseHandler做响应处理，怎么处理等会儿再看，把request看完先</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> CloseableHttpResponse <span class="title">execute</span><span class="params">(</span><br><span class="line">        <span class="keyword">final</span> HttpUriRequest request,</span><br><span class="line">        <span class="keyword">final</span> HttpContext context)</span> <span class="keyword">throws</span> IOException, ClientProtocolException </span>&#123;</span><br><span class="line">    Args.notNull(request, <span class="string">“HTTP request”</span>);</span><br><span class="line">    <span class="keyword">return</span> doExecute(determineTarget(request), request, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个execute是CloseableHttpClient的方法，我们传入的client是它的子类的一个实例，它又调用了doExecute()方法，继续看</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> CloseableHttpResponse <span class="title">doExecute</span><span class="params">(HttpHost target, HttpRequest request,</span><br><span class="line">        HttpContext context)</span> <span class="keyword">throws</span> IOException, ClientProtocolException</span>;</span><br></pre></td></tr></table></figure>
+
+<p>果然，这是一个抽象类，到底怎么doExecute交给具体的子类实现，下面去找它的实现，在AbstractHttpClient里面找到了这个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">     out = CloseableHttpResponseProxy.newProxy(</span><br><span class="line">     director.execute(target, request, execContext));</span><br><span class="line">    &#125; <span class="keyword">catch</span> …</span><br><span class="line">                </span><br><span class="line"><span class="keyword">return</span> out;</span><br></pre></td></tr></table></figure>
+
+<p>不知道我费劲心思想找这个发送请求的方法干嘛，它又转移了，偷偷瞄了一眼这个execute方法，好长，吓得我赶紧退了回来，具体的怎么请求其实不需要太了解，反正也看不懂，就是一系列封装，最后返回这个out，也就是请求网络完成后的响应，</p>
+<h2 id="响应处理"><a href="#响应处理" class="headerlink" title="响应处理"></a><a href="#响应处理" title="响应处理"></a>响应处理</h2><p>现在就来看处理响应的ResponseHandler了<br>    <code>中间代码不贴了</code><br>ResponseHandler其实是一个接口，封装了响应之后各个阶段的方法，而且框架已经帮我们写了很多实现类，比如常用的AsyncHttpResponseHandler、DataAsyncHttpResponseHandler、TextHttpResponseHandler、JsonHttpResponseHandler、FileAsyncHttpResponseHandler，所以用不着我们自己去实现，针对每种不同的请求方式，这些类会自动做相关的处理，比如请求获得一个文件，会在处理response的时候，直接返回一个file对象，下面来看看AsyncHttpResponseHandler，它是其它几个常用实现类的父类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.不带参数，一般我们get、post时候就是用这个，匿名对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncHttpResponseHandler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.第一个构造方法其实就是调用的这个，然后调用第4个构造方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncHttpResponseHandler</span><span class="params">(Looper looper)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 默认使用主线程的Looper</span></span><br><span class="line">    <span class="keyword">this</span>(looper == <span class="keyword">null</span> ? Looper.myLooper() : looper, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.可以手动指定使用线程池所在线程？不一定对，应该是当前Request所在的线程，即同步响应</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncHttpResponseHandler</span><span class="params">(<span class="keyword">boolean</span> usePoolThread)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(usePoolThread ? <span class="keyword">null</span> : Looper.myLooper(), usePoolThread);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4.其它构造方法都是调用这个，而这个构造方法是private的</span></span><br><span class="line"><span class="comment">// 如果同步响应，loop必须为空，异步响应，loop必须是Looper.myLooper()，而且usePoolThread必定为false</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">AsyncHttpResponseHandler</span><span class="params">(Looper looper, <span class="keyword">boolean</span> usePoolThread)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!usePoolThread) &#123;</span><br><span class="line">        <span class="comment">// 异步响应时，初始化了handler对象</span></span><br><span class="line">        Utils.asserts(looper != <span class="keyword">null</span>, <span class="string">“use looper thread, must call Looper.prepare() first!”</span>);</span><br><span class="line">        <span class="keyword">this</span>.looper = looper;</span><br><span class="line">        <span class="keyword">this</span>.handler = <span class="keyword">new</span> ResponderHandler(<span class="keyword">this</span>, looper);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果同步响应，全部置空</span></span><br><span class="line">        Utils.asserts(looper == <span class="keyword">null</span>, <span class="string">“use pool thread, looper should be null!”</span>);</span><br><span class="line">        <span class="keyword">this</span>.looper = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.handler = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.usePoolThread = usePoolThread;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面初始化Handler的时候，发现是new了一个ResponderHandler对象，下面去看看它</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/<em>*</em></span><br><span class="line">  Avoid leaks by using a non-anonymous handler class.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponderHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AsyncHttpResponseHandler mResponder;</span><br><span class="line"></span><br><span class="line">    ResponderHandler(AsyncHttpResponseHandler mResponder, Looper looper) &#123;</span><br><span class="line">        <span class="keyword">super</span>(looper);</span><br><span class="line">        <span class="keyword">this</span>.mResponder = mResponder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">        mResponder.handleMessage(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先看它的注释，通过使用一个非匿名的Handler类来避免泄漏，唉，看别人写的代码就是享受呀，静态内部类，学到了。再看它的实现，把handleMessage方法交给外面的AsyncHttpResponseHandler去处理，下面看看怎么处理的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Methods which emulate android’s Handler and Message methods</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message message)</span> </span>&#123;</span><br><span class="line">    Object[] response;</span><br><span class="line">    <span class="keyword">try</span> &#123; <span class="comment">// 根据收到的消息，调用相关的回调</span></span><br><span class="line">        <span class="keyword">switch</span> (message.what) &#123;</span><br><span class="line">            <span class="keyword">case</span> SUCCESS_MESSAGE:</span><br><span class="line">                response = (Object[]) message.obj;</span><br><span class="line">                <span class="keyword">if</span> (response != <span class="keyword">null</span> &amp;&amp; response.length &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">                    onSuccess((Integer) response[<span class="number">0</span>], (Header[]) response[<span class="number">1</span>], (<span class="keyword">byte</span>[]) response[<span class="number">2</span>]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    AsyncHttpClient.log.e(LOG_TAG, <span class="string">“SUCCESS_MESSAGE didn’t got enough params”</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> FAILURE_MESSAGE:</span><br><span class="line">                response = (Object[]) message.obj;</span><br><span class="line">                <span class="keyword">if</span> (response != <span class="keyword">null</span> &amp;&amp; response.length &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">                    onFailure((Integer) response[<span class="number">0</span>], (Header[]) response[<span class="number">1</span>], (<span class="keyword">byte</span>[]) response[<span class="number">2</span>], (Throwable) response[<span class="number">3</span>]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    AsyncHttpClient.log.e(LOG_TAG, <span class="string">“FAILURE_MESSAGE didn’t got enough params”</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> START_MESSAGE:</span><br><span class="line">                onStart();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> FINISH_MESSAGE:</span><br><span class="line">                onFinish();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> PROGRESS_MESSAGE:</span><br><span class="line">                response = (Object[]) message.obj;</span><br><span class="line">                <span class="keyword">if</span> (response != <span class="keyword">null</span> &amp;&amp; response.length &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        onProgress((Long) response[<span class="number">0</span>], (Long) response[<span class="number">1</span>]);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">                        AsyncHttpClient.log.e(LOG_TAG, <span class="string">“custom onProgress contains an error”</span>, t);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    AsyncHttpClient.log.e(LOG_TAG, <span class="string">“PROGRESS_MESSAGE didn’t got enough params”</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> RETRY_MESSAGE:</span><br><span class="line">                response = (Object[]) message.obj;</span><br><span class="line">                <span class="keyword">if</span> (response != <span class="keyword">null</span> &amp;&amp; response.length == <span class="number">1</span>) &#123;</span><br><span class="line">                    onRetry((Integer) response[<span class="number">0</span>]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    AsyncHttpClient.log.e(LOG_TAG, <span class="string">“RETRY_MESSAGE didn’t get enough params”</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> CANCEL_MESSAGE:</span><br><span class="line">                onCancel();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable error) &#123;</span><br><span class="line">        onUserException(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第一句的注释意思是，我就模仿Android的Handler来处理消息，根据发送消息的what判断，去调用相关的回调，从start到finish()全部都有，这些消息在什么时候发的呢，在开始的sendRequest的一系列过程中都有所体现，success和failure的消息稍微有点隐晦，是在sendResponseMessage方法中处理的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendResponseMessage</span><span class="params">(HttpResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">// 如果请求被cancel掉了就不做处理</span></span><br><span class="line">    <span class="keyword">if</span> (!Thread.currentThread().isInterrupted()) &#123;</span><br><span class="line">        StatusLine status = response.getStatusLine();</span><br><span class="line">        <span class="keyword">byte</span>[] responseBody;</span><br><span class="line">        responseBody = getResponseData(response.getEntity());</span><br><span class="line">        <span class="keyword">if</span> (!Thread.currentThread().isInterrupted()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (status.getStatusCode() &gt;= <span class="number">300</span>) &#123;</span><br><span class="line">                sendFailureMessage(status.getStatusCode(), response.getAllHeaders(), responseBody, <span class="keyword">new</span> HttpResponseException(status.getStatusCode(), status.getReasonPhrase()));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sendSuccessMessage(status.getStatusCode(), response.getAllHeaders(), responseBody);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>responseBody从getResponseData()方法中得到，根据响应码的值判断是否成功，发送相应的消息出去，至此为止好像还有一个回调没有发消息，onProgress()，下面来看看</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] getResponseData(HttpEntity entity) <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="keyword">byte</span>[] responseBody = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (entity != <span class="keyword">null</span>) &#123;</span><br><span class="line">        InputStream instream = entity.getContent();</span><br><span class="line">        <span class="keyword">if</span> (instream != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">long</span> contentLength = entity.getContentLength(); <span class="comment">//获得响应内容的长度</span></span><br><span class="line">            <span class="keyword">if</span> (contentLength &gt; Integer.MAX_VALUE) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">“HTTP entity too large to be buffered in memory”</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> buffersize = (contentLength &lt;= <span class="number">0</span>) ? BUFFER_SIZE : (<span class="keyword">int</span>) contentLength;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                ByteArrayBuffer buffer = <span class="keyword">new</span> ByteArrayBuffer(buffersize);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">byte</span>[] tmp = <span class="keyword">new</span> <span class="keyword">byte</span>[BUFFER_SIZE];</span><br><span class="line">                    <span class="keyword">long</span> count = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">int</span> l;</span><br><span class="line">                    <span class="keyword">while</span> ((l = instream.read(tmp)) != -<span class="number">1</span> &amp;&amp; !Thread.currentThread().isInterrupted()) &#123;</span><br><span class="line">                        count += l;</span><br><span class="line">                        buffer.append(tmp, <span class="number">0</span>, l);</span><br><span class="line">                        sendProgressMessage(count, (contentLength &lt;= <span class="number">0</span> ? <span class="number">1</span> : contentLength));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    AsyncHttpClient.silentCloseInputStream(instream);</span><br><span class="line">                    AsyncHttpClient.endEntityViaReflection(entity);</span><br><span class="line">                &#125;</span><br><span class="line">                responseBody = buffer.toByteArray();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (OutOfMemoryError e) &#123;</span><br><span class="line">                System.gc();</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">“File too large to fit into available memory”</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> responseBody;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>sendProgressMessage()在while循环里调用了，循环条件中加了一个是否cancel，如果被取消就没必要再发消息了，finally里面关流，并且把响应内容toByteArray()返回，那么异步响应到此为止全部结束，下面看看同步响应</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUseSynchronousMode</span><span class="params">(<span class="keyword">boolean</span> sync)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// A looper must be prepared before setting asynchronous mode.</span></span><br><span class="line">    <span class="keyword">if</span> (!sync &amp;&amp; looper == <span class="keyword">null</span>) &#123;</span><br><span class="line">        sync = <span class="keyword">true</span>;</span><br><span class="line">        AsyncHttpClient.log.w(LOG_TAG, <span class="string">“Current thread has not called Looper.prepare(). Forcing synchronous mode.”</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If using asynchronous mode.</span></span><br><span class="line">    <span class="keyword">if</span> (!sync &amp;&amp; handler == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">// Create a handler on current thread to submit tasks</span></span><br><span class="line">        handler = <span class="keyword">new</span> ResponderHandler(<span class="keyword">this</span>, looper);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sync &amp;&amp; handler != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Consider adding a flag to remove all queued messages.</span></span><br><span class="line">        handler = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    useSynchronousMode = sync;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>sync的值是设置进来的，假设为false，那么就是说我希望是异步响应，然而你的looper为空，所以不可能异步，就强制设置回true。其实想想，looper什么情况下可能为null，那就是在构造方法里传入usePoolThread为true的时候，也就是说刚好也设为同步。如果传入的是true，那就没话说，最后也把mod设置为同步。那么同步mod下怎么处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (getUseSynchronousMode() || handler == <span class="keyword">null</span>) &#123;</span><br><span class="line">        handleMessage(msg);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!Thread.currentThread().isInterrupted()) &#123; <span class="comment">// do not send messages if request has been cancelled</span></span><br><span class="line">        Utils.asserts(handler != <span class="keyword">null</span>, <span class="string">“handler should not be null!”</span>);</span><br><span class="line">        handler.sendMessage(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>嘿嘿，只能说设计得太巧妙了，如果是同步模式下，直接处理消息，异步模式才会用handler去发消息，该回调还是回调，但是同步模式下，不能直接更新ui，切记</p>
+<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a><a href="#总结一下" title="总结一下"></a>总结一下</h2><p>AsyncHttpClient核心类<br>AsyncHttpRequest+RequestHandler请求和请求管理<br>ResponseHandler+子类实现+setMod可以同步/异步响应<br>技术要点：  </p>
+<ul>
+<li>线程池，AsyncHttpRequest实现Runnable接口，添加到线程池执行队列中<em>   AsyncResponseHandler的异步响应，运用了android中的Handler</em>   ResponseHandler是一个接口，针对接口编程，扩展性更强</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-18T09:13:54.598Z" itemprop="dateUpdated">2017-11-18 09:13:54</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://www.luofeng.com">
+            <img src="/img/avatar.png" alt="洛枫">
+            洛枫
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.luofeng.com/2016/08/25/android-async-http源码分析/&title=《android-async-http源码分析》 — 洛枫的天空&pic=http://www.luofeng.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.luofeng.com/2016/08/25/android-async-http源码分析/&title=《android-async-http源码分析》 — 洛枫的天空&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.luofeng.com/2016/08/25/android-async-http源码分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《android-async-http源码分析》 — 洛枫的天空&url=http://www.luofeng.com/2016/08/25/android-async-http源码分析/&via=http://www.luofeng.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.luofeng.com/2016/08/25/android-async-http源码分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/09/09/Design设计/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Design设计</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/08/13/瞎子/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">瞎子</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2149208"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>洛枫 &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.luofeng.com/2016/08/25/android-async-http源码分析/&title=《android-async-http源码分析》 — 洛枫的天空&pic=http://www.luofeng.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.luofeng.com/2016/08/25/android-async-http源码分析/&title=《android-async-http源码分析》 — 洛枫的天空&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.luofeng.com/2016/08/25/android-async-http源码分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《android-async-http源码分析》 — 洛枫的天空&url=http://www.luofeng.com/2016/08/25/android-async-http源码分析/&via=http://www.luofeng.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.luofeng.com/2016/08/25/android-async-http源码分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.luofeng.com/2016/08/25/android-async-http源码分析/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
