@@ -13,25 +13,25 @@
     
     
     
-    <title>web application基础知识 | 洛枫的天空</title>
+    <title>B/S交互 | 洛枫的天空</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="webapp,tomcat">
-    <meta name="description" content="web application一个符合标准的 web appliction  应该包含WEB-INF文件夹 该文件夹下必须包含web.xml文件 该文件的内容至少包含   12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;">
-<meta name="keywords" content="webapp,tomcat">
+    <meta name="keywords" content="HTTP,Request-Response,Java-Web">
+    <meta name="description" content="B/S交互概述B/S交互，无非是用户通过浏览器敲一个地址或者其它形式向服务器发起一个请求，或请求资源或发送指令，然后服务器根据浏览器发来的请求做逻辑处理，最后向浏览器返回一些结果。 HTTP协议协议就是一斤Apple五块钱，别人给你一斤苹果你不会给十块钱也不会给两块钱。HTTP协议就是浏览器和服务器之间交流的一种规则，">
+<meta name="keywords" content="HTTP,Request-Response,Java-Web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web application基础知识">
-<meta property="og:url" content="http://www.luofeng.com/2017/11/20/web application基础知识/index.html">
+<meta property="og:title" content="B&#x2F;S交互">
+<meta property="og:url" content="http://www.luofeng.com/2017/11/21/BS交互/index.html">
 <meta property="og:site_name" content="洛枫的天空">
-<meta property="og:description" content="web application一个符合标准的 web appliction  应该包含WEB-INF文件夹 该文件夹下必须包含web.xml文件 该文件的内容至少包含   12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;	  xm">
+<meta property="og:description" content="B/S交互概述B/S交互，无非是用户通过浏览器敲一个地址或者其它形式向服务器发起一个请求，或请求资源或发送指令，然后服务器根据浏览器发来的请求做逻辑处理，最后向浏览器返回一些结果。 HTTP协议协议就是一斤Apple五块钱，别人给你一斤苹果你不会给十块钱也不会给两块钱。HTTP协议就是浏览器和服务器之间交流的一种规则，这种规则规定了一系列的格式，但是这种规则是无连接的，在处理完一次Request-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-20T15:08:06.185Z">
+<meta property="og:updated_time" content="2017-11-20T16:19:16.618Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="web application基础知识">
-<meta name="twitter:description" content="web application一个符合标准的 web appliction  应该包含WEB-INF文件夹 该文件夹下必须包含web.xml文件 该文件的内容至少包含   12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;	  xm">
+<meta name="twitter:title" content="B&#x2F;S交互">
+<meta name="twitter:description" content="B/S交互概述B/S交互，无非是用户通过浏览器敲一个地址或者其它形式向服务器发起一个请求，或请求资源或发送指令，然后服务器根据浏览器发来的请求做逻辑处理，最后向浏览器返回一些结果。 HTTP协议协议就是一斤Apple五块钱，别人给你一斤苹果你不会给十块钱也不会给两块钱。HTTP协议就是浏览器和服务器之间交流的一种规则，这种规则规定了一系列的格式，但是这种规则是无连接的，在处理完一次Request-">
     
         <link rel="alternate" type="application/atom+xml" title="洛枫的天空" href="/atom.xml">
     
@@ -119,7 +119,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">web application基础知识</div>
+        <div class="flex-col header-title ellipsis">B/S交互</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -141,11 +141,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">web application基础知识</h1>
+        <h1 class="title">B/S交互</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-11-19T22:59:42.000Z" itemprop="datePublished" class="page-time">
-  2017-11-19
+                <time datetime="2017-11-20T23:19:16.000Z" itemprop="datePublished" class="page-time">
+  2017-11-20
 </time>
 
 
@@ -166,17 +166,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#web-application"><span class="post-toc-number">1.</span> <span class="post-toc-text">web application</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试"><span class="post-toc-number">2.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其它"><span class="post-toc-number">3.</span> <span class="post-toc-text">其它</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B-S交互概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">B/S交互概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HTTP协议"><span class="post-toc-number">2.</span> <span class="post-toc-text">HTTP协议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#访问方式"><span class="post-toc-number">3.</span> <span class="post-toc-text">访问方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java-Web中的实现"><span class="post-toc-number">4.</span> <span class="post-toc-text">Java-Web中的实现</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-web application基础知识"
+<article id="post-BS交互"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">web application基础知识</h1>
+        <h1 class="post-card-title">B/S交互</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-11-19 22:59:42" datetime="2017-11-19T22:59:42.000Z"  itemprop="datePublished">2017-11-19</time>
+            <time class="post-time" title="2017-11-20 23:19:16" datetime="2017-11-20T23:19:16.000Z"  itemprop="datePublished">2017-11-20</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
@@ -191,31 +191,14 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="web-application"><a href="#web-application" class="headerlink" title="web application"></a>web application</h3><p>一个符合标准的 web appliction</p>
-<ul>
-<li>应该包含WEB-INF文件夹</li>
-<li>该文件夹下必须包含web.xml文件</li>
-<li><p>该文件的内容至少包含</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">	  <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">	  <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee</span></span></span><br><span class="line"><span class="tag"><span class="string">	                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"</span></span></span><br><span class="line"><span class="tag">	  <span class="attr">version</span>=<span class="string">"3.1"</span></span></span><br><span class="line"><span class="tag">	  <span class="attr">metadata-complete</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>它的目录层级应该是这样的，其中必要条件只有上述3个</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">AppName</span><br><span class="line">	WEB-INF</span><br><span class="line">		web.xml</span><br><span class="line">		lib（存放类库）</span><br><span class="line">		classes（存放编译好的Class）</span><br><span class="line">	META-INF（存放上下文信息，符合j2ee标准）</span><br><span class="line">	other（存放其它的一些文件）</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ol>
-<li>在tomcat的webapps目录下创建test应用</li>
-<li>按照上述标准在test目录下创建相应文件内容</li>
-<li>在test目录下创建helloworld.html，内容为 <code>Hello World!</code></li>
-<li>启动tomcat</li>
-<li>浏览器访问 <a href="http://127.0.0.1:8080/test/helloworld.html" target="_blank" rel="noopener">http://127.0.0.1:8080/test/helloworld.html</a></li>
-<li>浏览器上显示 Hello World!</li>
+            <h3 id="B-S交互概述"><a href="#B-S交互概述" class="headerlink" title="B/S交互概述"></a>B/S交互概述</h3><p>B/S交互，无非是用户通过浏览器敲一个地址或者其它形式向服务器发起一个请求，或请求资源或发送指令，然后服务器根据浏览器发来的请求做逻辑处理，最后向浏览器返回一些结果。</p>
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>协议就是一斤Apple五块钱，别人给你一斤苹果你不会给十块钱也不会给两块钱。HTTP协议就是浏览器和服务器之间交流的一种规则，这种规则规定了一系列的格式，但是这种规则是无连接的，在处理完一次Request-Response之后就会断开。</p>
+<h3 id="访问方式"><a href="#访问方式" class="headerlink" title="访问方式"></a>访问方式</h3><p><code>GET</code> 和 <code>POST</code> 是最常用的访问方式，除此之外还有 <code>HEAD</code>、<code>DELETE</code>、<code>TRACE</code>、<code>PUT</code>、<code>OPTIONS</code> 5种访问方式</p>
+<ol>
+<li>GET方式<br>从浏览器地址栏输入网址，这种访问方式都是Get，Get方式的请求会把参数以key=value的形式带入到url中去，例如百度搜索Java，访问的链接就是<code>http://www.baidu.com/s?wd=Java</code> 并且Get方式提交的地址不能超过256(2的8次方)个字符。</li>
+<li>POST方式<br>一种场景是当请求的字符长度超过256个字符时，就必须使用Post方式，例如上传文件，还有一种是不想把敏感信息放入到url，例如密码信息，当然一般来说是不会有明文密码这种出现（通过协定好的加密解密方式）。Post方式一般要手动设置Content-Type和Content-Length，参数以键值对方式设置。</li>
 </ol>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
-<li>直接访问tomcat默认端口时，其实是访问名为webapps/ROOT这个应用</li>
-<li>一般地，webapplication放在tomcat的webapps底下，访问时用默认地址端口/应用名</li>
-<li><p>如果不放在webapps目录下，可以在tomcat/conf/server.xml的Host节点中添加<context>节点，一个Context就相当于一个webapp。节点中的path指跟在tomcat默认端口后的访问路径，一定是以“/”开头，docBase指webapp的物理路径，可以是相对路径和绝对路径，其中相对路径是指与appBase（webapps）相对的路径。</context></p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/hello"</span> <span class="attr">docBase</span>=<span class="string">"D:\ workspace\hello\WebRoot"</span> <span class="attr">debug</span>=<span class="string">"0"</span> <span class="attr">privileged</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
+<h3 id="Java-Web中的实现"><a href="#Java-Web中的实现" class="headerlink" title="Java-Web中的实现"></a>Java-Web中的实现</h3><p>首先明确的是，Java-Web中所有的Request-Response都是由 <code>Servlet</code>来完成的，Servlet是Java对于web交互的一种标准，而被web应用容器实现，例如 <code>Tomcat</code>，因此我们的web应用能够在这些容器中运行。一个Java程序应该是从main方法开始执行的，但是Servlet中没有main方法，而是在请求发送至服务端时，这些容器自动去调用Servlet中的某些方法。 </p>
 
         </div>
 
@@ -223,7 +206,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-11-20T15:08:06.185Z" itemprop="dateUpdated">2017-11-20 15:08:06</time>
+    最后更新时间：<time datetime="2017-11-20T16:19:16.618Z" itemprop="dateUpdated">2017-11-20 16:19:16</time>
 </span><br>
 
 
@@ -242,7 +225,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webapp/">webapp</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java-Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Request-Response/">Request-Response</a></li></ul>
 
 
             
@@ -252,7 +235,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.luofeng.com/2017/11/20/web application基础知识/&title=《web application基础知识》 — 洛枫的天空&pic=http://www.luofeng.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.luofeng.com/2017/11/21/BS交互/&title=《B/S交互》 — 洛枫的天空&pic=http://www.luofeng.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -262,22 +245,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.luofeng.com/2017/11/20/web application基础知识/&title=《web application基础知识》 — 洛枫的天空&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.luofeng.com/2017/11/21/BS交互/&title=《B/S交互》 — 洛枫的天空&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.luofeng.com/2017/11/20/web application基础知识/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.luofeng.com/2017/11/21/BS交互/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《web application基础知识》 — 洛枫的天空&url=http://www.luofeng.com/2017/11/20/web application基础知识/&via=http://www.luofeng.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《B/S交互》 — 洛枫的天空&url=http://www.luofeng.com/2017/11/21/BS交互/&via=http://www.luofeng.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.luofeng.com/2017/11/20/web application基础知识/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.luofeng.com/2017/11/21/BS交互/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -297,21 +280,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/11/21/BS交互/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">B/S交互</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/01/15/春秋/" id="post-next" class="post-nav-link">
+      <a href="/2017/11/20/web application基础知识/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">春秋</h4>
+        <h4 class="title">web application基础知识</h4>
       </a>
     </div>
   
@@ -383,7 +359,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.luofeng.com/2017/11/20/web application基础知识/&title=《web application基础知识》 — 洛枫的天空&pic=http://www.luofeng.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.luofeng.com/2017/11/21/BS交互/&title=《B/S交互》 — 洛枫的天空&pic=http://www.luofeng.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -393,22 +369,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.luofeng.com/2017/11/20/web application基础知识/&title=《web application基础知识》 — 洛枫的天空&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.luofeng.com/2017/11/21/BS交互/&title=《B/S交互》 — 洛枫的天空&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.luofeng.com/2017/11/20/web application基础知识/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.luofeng.com/2017/11/21/BS交互/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《web application基础知识》 — 洛枫的天空&url=http://www.luofeng.com/2017/11/20/web application基础知识/&via=http://www.luofeng.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《B/S交互》 — 洛枫的天空&url=http://www.luofeng.com/2017/11/21/BS交互/&via=http://www.luofeng.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.luofeng.com/2017/11/20/web application基础知识/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.luofeng.com/2017/11/21/BS交互/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -419,7 +395,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.luofeng.com/2017/11/20/web application基础知识/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.luofeng.com/2017/11/21/BS交互/" alt="微信分享二维码">
 </div>
 
 

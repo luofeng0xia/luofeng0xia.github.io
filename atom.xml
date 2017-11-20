@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luofeng.com/"/>
-  <updated>2017-11-20T15:08:06.185Z</updated>
+  <updated>2017-11-20T16:19:16.618Z</updated>
   <id>http://www.luofeng.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>B/S交互</title>
+    <link href="http://www.luofeng.com/2017/11/21/BS%E4%BA%A4%E4%BA%92/"/>
+    <id>http://www.luofeng.com/2017/11/21/BS交互/</id>
+    <published>2017-11-20T23:19:16.000Z</published>
+    <updated>2017-11-20T16:19:16.618Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="B-S交互概述"><a href="#B-S交互概述" class="headerlink" title="B/S交互概述"></a>B/S交互概述</h3><p>B/S交互，无非是用户通过浏览器敲一个地址或者其它形式向服务器发起一个请求，或请求资源或发送指令，然后服务器根据浏览器发来的请求做逻辑处理，最后向浏览器返回一些结果。</p><h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>协议就是一斤Apple五块钱，别人给你一斤苹果你不会给十块钱也不会给两块钱。HTTP协议就是浏览器和服务器之间交流的一种规则，这种规则规定了一系列的格式，但是这种规则是无连接的，在处理完一次Request-Response之后就会断开。</p><h3 id="访问方式"><a href="#访问方式" class="headerlink" title="访问方式"></a>访问方式</h3><p><code>GET</code> 和 <code>POST</code> 是最常用的访问方式，除此之外还有 <code>HEAD</code>、<code>DELETE</code>、<code>TRACE</code>、<code>PUT</code>、<code>OPTIONS</code> 5种访问方式</p><ol><li>GET方式<br>从浏览器地址栏输入网址，这种访问方式都是Get，Get方式的请求会把参数以key=value的形式带入到url中去，例如百度搜索Java，访问的链接就是<code>http://www.baidu.com/s?wd=Java</code> 并且Get方式提交的地址不能超过256(2的8次方)个字符。</li><li>POST方式<br>一种场景是当请求的字符长度超过256个字符时，就必须使用Post方式，例如上传文件，还有一种是不想把敏感信息放入到url，例如密码信息，当然一般来说是不会有明文密码这种出现（通过协定好的加密解密方式）。Post方式一般要手动设置Content-Type和Content-Length，参数以键值对方式设置。</li></ol><h3 id="Java-Web中的实现"><a href="#Java-Web中的实现" class="headerlink" title="Java-Web中的实现"></a>Java-Web中的实现</h3><p>首先明确的是，Java-Web中所有的Request-Response都是由 <code>Servlet</code>来完成的，Servlet是Java对于web交互的一种标准，而被web应用容器实现，例如 <code>Tomcat</code>，因此我们的web应用能够在这些容器中运行。一个Java程序应该是从main方法开始执行的，但是Servlet中没有main方法，而是在请求发送至服务端时，这些容器自动去调用Servlet中的某些方法。 </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;B-S交互概述&quot;&gt;&lt;a href=&quot;#B-S交互概述&quot; class=&quot;headerlink&quot; title=&quot;B/S交互概述&quot;&gt;&lt;/a&gt;B/S交互概述&lt;/h3&gt;&lt;p&gt;B/S交互，无非是用户通过浏览器敲一个地址或者其它形式向服务器发起一个请求，或请求资源或发送指令，然
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="HTTP" scheme="http://www.luofeng.com/tags/HTTP/"/>
+    
+      <category term="Request-Response" scheme="http://www.luofeng.com/tags/Request-Response/"/>
+    
+      <category term="Java-Web" scheme="http://www.luofeng.com/tags/Java-Web/"/>
+    
+  </entry>
   
   <entry>
     <title>web application基础知识</title>
