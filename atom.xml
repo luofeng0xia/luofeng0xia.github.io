@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luofeng.com/"/>
-  <updated>2017-11-20T16:19:16.618Z</updated>
+  <updated>2017-11-22T14:34:30.399Z</updated>
   <id>http://www.luofeng.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>认识Servlet</title>
+    <link href="http://www.luofeng.com/2017/11/23/%E8%AE%A4%E8%AF%86Servlet/"/>
+    <id>http://www.luofeng.com/2017/11/23/认识Servlet/</id>
+    <published>2017-11-22T22:30:48.000Z</published>
+    <updated>2017-11-22T14:34:30.399Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Servlet工作流"><a href="#Servlet工作流" class="headerlink" title="Servlet工作流"></a>Servlet工作流</h3><ol><li>浏览器通过Request向服务器发起请求，具体请求某个servlet</li><li>web容器调用Servlet的service方法，具体交给实现类的特定方法</li><li>Servlet处理完浏览器发来的请求之后，通过Response把结果返回</li></ol><h3 id="Servlet实现"><a href="#Servlet实现" class="headerlink" title="Servlet实现"></a>Servlet实现</h3><ol><li>Servlet是指javax.servlet.Servlet接口，默认定义了init、service、destroy等方法</li><li>其中init方法，在web容器实例化该servlet后调用一次，在init之后，这个servlet就被放入web服务中，只要当前服务不关，不管后续请求过多少次，都不会再调用。</li><li>service方法，真正处理浏览器请求的方法，在每次发起请求时都会被自动调用，接受一个ServletRequest和一个ServletResponse参数，分别封装了请求信息和响应信息。</li><li>destroy方法，与init方法对应，该方法在整个服务退出时被调用，调用后当前servlet无法再接收请求，意味着生命周期的结束。</li><li>GenericServlet是Servlet接口的实现类，需要自己重构Servlet时，一般从该类继承，也是Servlet类的鼻祖。</li><li>HttpServlet，继承自GenericServlet，是专门处理http协议的Servlet，其中定义了doGet和doPost，会根据http请求的方式自动调用，是最常用Serlter类。</li></ol><h3 id="第一个Servlet"><a href="#第一个Servlet" class="headerlink" title="第一个Servlet"></a>第一个Servlet</h3><p>程序世界里，第一个永远是 Helloworld! </p><ol><li><p>新建class，HelloworldServlet继承自HttpServlet，然后打印Hello World!</p> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloworldServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>在web.xml中配置当前Servlet信息，其中servlet-name是给这个Servlet的唯一标识，通过<servlet>标签和<servlet-mapping>标签中的servlet-name字段，把前台url和后台调用的Servlet.class联系起来。</servlet-mapping></servlet></p> <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloworldServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>HelloworldServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloworldServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/helloworld<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ol><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>servlet-class是相对与当前web应用输出classes目录为根路径，默认为WEB-INF/classes/，因此如果是带包名的Servlet，这里的servlet-class也应该是全名。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Servlet工作流&quot;&gt;&lt;a href=&quot;#Servlet工作流&quot; class=&quot;headerlink&quot; title=&quot;Servlet工作流&quot;&gt;&lt;/a&gt;Servlet工作流&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;浏览器通过Request向服务器发起请求，具体请求某个servl
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Servlet" scheme="http://www.luofeng.com/tags/Servlet/"/>
+    
+  </entry>
   
   <entry>
     <title>B/S交互</title>
