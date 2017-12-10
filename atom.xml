@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luofeng.com/"/>
-  <updated>2017-11-25T09:27:05.960Z</updated>
+  <updated>2017-12-10T14:47:19.939Z</updated>
   <id>http://www.luofeng.com/</id>
   
   <author>
@@ -17,9 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>java maven gitignore</title>
+    <link href="http://www.luofeng.com/2017/12/11/java%20maven%20gitignore/"/>
+    <id>http://www.luofeng.com/2017/12/11/java maven gitignore/</id>
+    <published>2017-12-10T22:34:27.000Z</published>
+    <updated>2017-12-10T14:47:19.939Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="windows下创建-gitignore文件"><a href="#windows下创建-gitignore文件" class="headerlink" title="windows下创建.gitignore文件"></a>windows下创建.gitignore文件</h3><p>因为windows下 .后面的算作文件后缀，不能创建空文件名的文件，所以不能直接建.gitignore文件。可以在powershell命令行下，输入new-item .gitignore 创建.gitignore文件</p><h3 id="gitignore文件模板"><a href="#gitignore文件模板" class="headerlink" title="gitignore文件模板"></a>gitignore文件模板</h3><p>对于一个maven项目来说，只要提交src、pom.xml、README.MD和.gitignore，其它文件容易造成冲突</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">### Java template</span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line"># Mobile Tools for Java (J2ME)</span><br><span class="line">.mtj.tmp/</span><br><span class="line"></span><br><span class="line"># Package Files #</span><br><span class="line">*.jar</span><br><span class="line">*.war</span><br><span class="line">*.ear</span><br><span class="line"></span><br><span class="line"># virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml</span><br><span class="line">hs_err_pid*</span><br><span class="line">### JetBrains template</span><br><span class="line"># Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm</span><br><span class="line"># Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839</span><br><span class="line"></span><br><span class="line"># User-specific stuff:</span><br><span class="line">.idea/workspace.xml</span><br><span class="line">.idea/tasks.xml</span><br><span class="line">.idea/dictionaries</span><br><span class="line">.idea/vcs.xml</span><br><span class="line">.idea/jsLibraryMappings.xml</span><br><span class="line"></span><br><span class="line"># Sensitive or high-churn files:</span><br><span class="line">.idea/dataSources.ids</span><br><span class="line">.idea/dataSources.xml</span><br><span class="line">.idea/dataSources.local.xml</span><br><span class="line">.idea/sqlDataSources.xml</span><br><span class="line">.idea/dynamic.xml</span><br><span class="line">.idea/uiDesigner.xml</span><br><span class="line"></span><br><span class="line"># Gradle:</span><br><span class="line">.idea/gradle.xml</span><br><span class="line">.idea/</span><br><span class="line"></span><br><span class="line"># Mongo Explorer plugin:</span><br><span class="line">.idea/mongoSettings.xml</span><br><span class="line"></span><br><span class="line">## File-based project format:</span><br><span class="line">*.iws</span><br><span class="line"></span><br><span class="line">## Plugin-specific files:</span><br><span class="line"></span><br><span class="line"># IntelliJ</span><br><span class="line">/out/</span><br><span class="line"></span><br><span class="line"># mpeltonen/sbt-idea plugin</span><br><span class="line">.idea_modules/</span><br><span class="line"></span><br><span class="line"># JIRA plugin</span><br><span class="line">atlassian-ide-plugin.xml</span><br><span class="line"></span><br><span class="line"># Crashlytics plugin (for Android Studio and IntelliJ)</span><br><span class="line">com_crashlytics_export_strings.xml</span><br><span class="line">crashlytics.properties</span><br><span class="line">crashlytics-build.properties</span><br><span class="line">fabric.properties</span><br><span class="line">### Windows template</span><br><span class="line"># Windows image file caches</span><br><span class="line">Thumbs.db</span><br><span class="line">ehthumbs.db</span><br><span class="line"></span><br><span class="line"># Folder config file</span><br><span class="line">Desktop.ini</span><br><span class="line"></span><br><span class="line"># Recycle Bin used on file shares</span><br><span class="line">$RECYCLE.BIN/</span><br><span class="line"></span><br><span class="line"># Windows Installer files</span><br><span class="line">*.cab</span><br><span class="line">*.msi</span><br><span class="line">*.msm</span><br><span class="line">*.msp</span><br><span class="line"></span><br><span class="line"># Windows shortcuts</span><br><span class="line">*.lnk</span><br><span class="line">### Maven template</span><br><span class="line">target/</span><br><span class="line">pom.xml.tag</span><br><span class="line">pom.xml.releaseBackup</span><br><span class="line">pom.xml.versionsBackup</span><br><span class="line">pom.xml.next</span><br><span class="line">release.properties</span><br><span class="line">dependency-reduced-pom.xml</span><br><span class="line">buildNumber.properties</span><br><span class="line">.mvn/timing.properties</span><br><span class="line"># ignore eclipse files</span><br><span class="line">.project</span><br><span class="line">.classpath</span><br><span class="line">.settings</span><br><span class="line">.metadata</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;windows下创建-gitignore文件&quot;&gt;&lt;a href=&quot;#windows下创建-gitignore文件&quot; class=&quot;headerlink&quot; title=&quot;windows下创建.gitignore文件&quot;&gt;&lt;/a&gt;windows下创建.gitignore
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Java" scheme="http://www.luofeng.com/tags/Java/"/>
+    
+      <category term="Git" scheme="http://www.luofeng.com/tags/Git/"/>
+    
+      <category term="Maven" scheme="http://www.luofeng.com/tags/Maven/"/>
+    
+  </entry>
+  
+  <entry>
     <title>无关记事</title>
-    <link href="http://www.luofeng.com/2017/11/26/%E6%97%A0%E5%85%B3%E8%AE%B0%E4%BA%8B/"/>
-    <id>http://www.luofeng.com/2017/11/26/无关记事/</id>
+    <link href="http://www.luofeng.com/2017/11/26/wu%20guan%20ji%20shi/"/>
+    <id>http://www.luofeng.com/2017/11/26/wu guan ji shi/</id>
     <published>2017-11-25T17:26:38.000Z</published>
     <updated>2017-11-25T09:27:05.960Z</updated>
     
@@ -46,8 +75,8 @@
   
   <entry>
     <title>认识Servlet</title>
-    <link href="http://www.luofeng.com/2017/11/23/%E8%AE%A4%E8%AF%86Servlet/"/>
-    <id>http://www.luofeng.com/2017/11/23/认识Servlet/</id>
+    <link href="http://www.luofeng.com/2017/11/23/Start%20Servlet/"/>
+    <id>http://www.luofeng.com/2017/11/23/Start Servlet/</id>
     <published>2017-11-22T22:30:48.000Z</published>
     <updated>2017-11-22T14:34:30.399Z</updated>
     
@@ -72,8 +101,8 @@
   
   <entry>
     <title>B/S交互</title>
-    <link href="http://www.luofeng.com/2017/11/21/BS%E4%BA%A4%E4%BA%92/"/>
-    <id>http://www.luofeng.com/2017/11/21/BS交互/</id>
+    <link href="http://www.luofeng.com/2017/11/21/BS%20Interaction/"/>
+    <id>http://www.luofeng.com/2017/11/21/BS Interaction/</id>
     <published>2017-11-20T23:19:16.000Z</published>
     <updated>2017-11-20T16:19:16.618Z</updated>
     
@@ -101,8 +130,8 @@
   
   <entry>
     <title>web application基础知识</title>
-    <link href="http://www.luofeng.com/2017/11/20/web%20application%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    <id>http://www.luofeng.com/2017/11/20/web application基础知识/</id>
+    <link href="http://www.luofeng.com/2017/11/20/web%20application%20basic/"/>
+    <id>http://www.luofeng.com/2017/11/20/web application basic/</id>
     <published>2017-11-19T22:59:42.000Z</published>
     <updated>2017-11-20T15:08:06.185Z</updated>
     
@@ -128,8 +157,8 @@
   
   <entry>
     <title>春秋</title>
-    <link href="http://www.luofeng.com/2017/01/15/%E6%98%A5%E7%A7%8B/"/>
-    <id>http://www.luofeng.com/2017/01/15/春秋/</id>
+    <link href="http://www.luofeng.com/2017/01/15/chun%20qiu/"/>
+    <id>http://www.luofeng.com/2017/01/15/chun qiu/</id>
     <published>2017-01-14T20:56:15.000Z</published>
     <updated>2017-11-25T09:28:25.324Z</updated>
     
@@ -153,8 +182,8 @@
   
   <entry>
     <title>再见理想</title>
-    <link href="http://www.luofeng.com/2016/10/24/%E5%86%8D%E8%A7%81%E7%90%86%E6%83%B3/"/>
-    <id>http://www.luofeng.com/2016/10/24/再见理想/</id>
+    <link href="http://www.luofeng.com/2016/10/24/zai%20jian%20li%20xiang/"/>
+    <id>http://www.luofeng.com/2016/10/24/zai jian li xiang/</id>
     <published>2016-10-24T08:53:07.000Z</published>
     <updated>2017-11-25T09:27:25.526Z</updated>
     
@@ -178,8 +207,8 @@
   
   <entry>
     <title>Design设计</title>
-    <link href="http://www.luofeng.com/2016/09/09/Design%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://www.luofeng.com/2016/09/09/Design设计/</id>
+    <link href="http://www.luofeng.com/2016/09/09/Android%20L%20New%20Design/"/>
+    <id>http://www.luofeng.com/2016/09/09/Android L New Design/</id>
     <published>2016-09-09T08:15:53.000Z</published>
     <updated>2017-11-25T09:28:46.224Z</updated>
     
@@ -207,8 +236,8 @@
   
   <entry>
     <title>android-async-http源码分析</title>
-    <link href="http://www.luofeng.com/2016/08/25/android-async-http%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    <id>http://www.luofeng.com/2016/08/25/android-async-http源码分析/</id>
+    <link href="http://www.luofeng.com/2016/08/25/android-async-http%20source%20analysis/"/>
+    <id>http://www.luofeng.com/2016/08/25/android-async-http source analysis/</id>
     <published>2016-08-24T23:02:15.000Z</published>
     <updated>2017-11-25T09:28:56.978Z</updated>
     
@@ -236,8 +265,8 @@
   
   <entry>
     <title>瞎子</title>
-    <link href="http://www.luofeng.com/2016/08/13/%E7%9E%8E%E5%AD%90/"/>
-    <id>http://www.luofeng.com/2016/08/13/瞎子/</id>
+    <link href="http://www.luofeng.com/2016/08/13/xia%20zi/"/>
+    <id>http://www.luofeng.com/2016/08/13/xia zi/</id>
     <published>2016-08-12T22:21:01.000Z</published>
     <updated>2017-11-25T09:27:38.609Z</updated>
     
@@ -261,8 +290,8 @@
   
   <entry>
     <title>由零开始</title>
-    <link href="http://www.luofeng.com/2016/07/24/%E7%94%B1%E9%9B%B6%E5%BC%80%E5%A7%8B/"/>
-    <id>http://www.luofeng.com/2016/07/24/由零开始/</id>
+    <link href="http://www.luofeng.com/2016/07/24/you%20ling%20kai%20shi/"/>
+    <id>http://www.luofeng.com/2016/07/24/you ling kai shi/</id>
     <published>2016-07-24T10:56:14.000Z</published>
     <updated>2017-11-25T09:27:31.778Z</updated>
     
@@ -286,8 +315,8 @@
   
   <entry>
     <title>我为什么活着</title>
-    <link href="http://www.luofeng.com/2016/07/15/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B4%BB%E7%9D%80/"/>
-    <id>http://www.luofeng.com/2016/07/15/我为什么活着/</id>
+    <link href="http://www.luofeng.com/2016/07/15/wo%20wei%20shen%20me%20huo%20zhe/"/>
+    <id>http://www.luofeng.com/2016/07/15/wo wei shen me huo zhe/</id>
     <published>2016-07-14T18:11:30.000Z</published>
     <updated>2017-11-25T09:27:45.942Z</updated>
     
