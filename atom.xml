@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.luofeng.com/"/>
+  <link href="http://www.luofeng.tk/"/>
   <updated>2017-12-10T14:47:19.939Z</updated>
-  <id>http://www.luofeng.com/</id>
+  <id>http://www.luofeng.tk/</id>
   
   <author>
     <name>洛枫</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>java maven gitignore</title>
-    <link href="http://www.luofeng.com/2017/12/11/java%20maven%20gitignore/"/>
-    <id>http://www.luofeng.com/2017/12/11/java maven gitignore/</id>
+    <link href="http://www.luofeng.tk/2017/12/11/java%20maven%20gitignore/"/>
+    <id>http://www.luofeng.tk/2017/12/11/java maven gitignore/</id>
     <published>2017-12-10T22:34:27.000Z</published>
     <updated>2017-12-10T14:47:19.939Z</updated>
     
@@ -34,21 +34,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://www.luofeng.tk/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Java" scheme="http://www.luofeng.com/tags/Java/"/>
+      <category term="Java" scheme="http://www.luofeng.tk/tags/Java/"/>
     
-      <category term="Git" scheme="http://www.luofeng.com/tags/Git/"/>
+      <category term="Maven" scheme="http://www.luofeng.tk/tags/Maven/"/>
     
-      <category term="Maven" scheme="http://www.luofeng.com/tags/Maven/"/>
+      <category term="Git" scheme="http://www.luofeng.tk/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>无关记事</title>
-    <link href="http://www.luofeng.com/2017/11/26/wu%20guan%20ji%20shi/"/>
-    <id>http://www.luofeng.com/2017/11/26/wu guan ji shi/</id>
+    <link href="http://www.luofeng.tk/2017/11/26/wu%20guan%20ji%20shi/"/>
+    <id>http://www.luofeng.tk/2017/11/26/wu guan ji shi/</id>
     <published>2017-11-25T17:26:38.000Z</published>
     <updated>2017-11-25T09:27:05.960Z</updated>
     
@@ -66,17 +66,17 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://www.luofeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="随笔" scheme="http://www.luofeng.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>认识Servlet</title>
-    <link href="http://www.luofeng.com/2017/11/23/Start%20Servlet/"/>
-    <id>http://www.luofeng.com/2017/11/23/Start Servlet/</id>
+    <link href="http://www.luofeng.tk/2017/11/23/Start%20Servlet/"/>
+    <id>http://www.luofeng.tk/2017/11/23/Start Servlet/</id>
     <published>2017-11-22T22:30:48.000Z</published>
     <updated>2017-11-22T14:34:30.399Z</updated>
     
@@ -92,17 +92,17 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://www.luofeng.tk/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Servlet" scheme="http://www.luofeng.com/tags/Servlet/"/>
+      <category term="Servlet" scheme="http://www.luofeng.tk/tags/Servlet/"/>
     
   </entry>
   
   <entry>
     <title>B/S交互</title>
-    <link href="http://www.luofeng.com/2017/11/21/BS%20Interaction/"/>
-    <id>http://www.luofeng.com/2017/11/21/BS Interaction/</id>
+    <link href="http://www.luofeng.tk/2017/11/21/BS%20Interaction/"/>
+    <id>http://www.luofeng.tk/2017/11/21/BS Interaction/</id>
     <published>2017-11-20T23:19:16.000Z</published>
     <updated>2017-11-20T16:19:16.618Z</updated>
     
@@ -117,21 +117,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://www.luofeng.tk/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="HTTP" scheme="http://www.luofeng.com/tags/HTTP/"/>
+      <category term="HTTP" scheme="http://www.luofeng.tk/tags/HTTP/"/>
     
-      <category term="Request-Response" scheme="http://www.luofeng.com/tags/Request-Response/"/>
+      <category term="Request-Response" scheme="http://www.luofeng.tk/tags/Request-Response/"/>
     
-      <category term="Java-Web" scheme="http://www.luofeng.com/tags/Java-Web/"/>
+      <category term="Java-Web" scheme="http://www.luofeng.tk/tags/Java-Web/"/>
     
   </entry>
   
   <entry>
     <title>web application基础知识</title>
-    <link href="http://www.luofeng.com/2017/11/20/web%20application%20basic/"/>
-    <id>http://www.luofeng.com/2017/11/20/web application basic/</id>
+    <link href="http://www.luofeng.tk/2017/11/20/web%20application%20basic/"/>
+    <id>http://www.luofeng.tk/2017/11/20/web application basic/</id>
     <published>2017-11-19T22:59:42.000Z</published>
     <updated>2017-11-20T15:08:06.185Z</updated>
     
@@ -146,19 +146,19 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://www.luofeng.tk/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="webapp" scheme="http://www.luofeng.com/tags/webapp/"/>
+      <category term="webapp" scheme="http://www.luofeng.tk/tags/webapp/"/>
     
-      <category term="tomcat" scheme="http://www.luofeng.com/tags/tomcat/"/>
+      <category term="tomcat" scheme="http://www.luofeng.tk/tags/tomcat/"/>
     
   </entry>
   
   <entry>
     <title>春秋</title>
-    <link href="http://www.luofeng.com/2017/01/15/chun%20qiu/"/>
-    <id>http://www.luofeng.com/2017/01/15/chun qiu/</id>
+    <link href="http://www.luofeng.tk/2017/01/15/chun%20qiu/"/>
+    <id>http://www.luofeng.tk/2017/01/15/chun qiu/</id>
     <published>2017-01-14T20:56:15.000Z</published>
     <updated>2017-11-25T09:28:25.324Z</updated>
     
@@ -173,17 +173,17 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://www.luofeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="随笔" scheme="http://www.luofeng.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>再见理想</title>
-    <link href="http://www.luofeng.com/2016/10/24/zai%20jian%20li%20xiang/"/>
-    <id>http://www.luofeng.com/2016/10/24/zai jian li xiang/</id>
+    <link href="http://www.luofeng.tk/2016/10/24/zai%20jian%20li%20xiang/"/>
+    <id>http://www.luofeng.tk/2016/10/24/zai jian li xiang/</id>
     <published>2016-10-24T08:53:07.000Z</published>
     <updated>2017-11-25T09:27:25.526Z</updated>
     
@@ -198,17 +198,17 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://www.luofeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="随笔" scheme="http://www.luofeng.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>Design设计</title>
-    <link href="http://www.luofeng.com/2016/09/09/Android%20L%20New%20Design/"/>
-    <id>http://www.luofeng.com/2016/09/09/Android L New Design/</id>
+    <link href="http://www.luofeng.tk/2016/09/09/Android%20L%20New%20Design/"/>
+    <id>http://www.luofeng.tk/2016/09/09/Android L New Design/</id>
     <published>2016-09-09T08:15:53.000Z</published>
     <updated>2017-11-25T09:28:46.224Z</updated>
     
@@ -223,21 +223,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://www.luofeng.tk/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="android" scheme="http://www.luofeng.com/tags/android/"/>
+      <category term="android" scheme="http://www.luofeng.tk/tags/android/"/>
     
-      <category term="笔记" scheme="http://www.luofeng.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://www.luofeng.tk/tags/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="design" scheme="http://www.luofeng.com/tags/design/"/>
+      <category term="design" scheme="http://www.luofeng.tk/tags/design/"/>
     
   </entry>
   
   <entry>
     <title>android-async-http源码分析</title>
-    <link href="http://www.luofeng.com/2016/08/25/android-async-http%20source%20analysis/"/>
-    <id>http://www.luofeng.com/2016/08/25/android-async-http source analysis/</id>
+    <link href="http://www.luofeng.tk/2016/08/25/android-async-http%20source%20analysis/"/>
+    <id>http://www.luofeng.tk/2016/08/25/android-async-http source analysis/</id>
     <published>2016-08-24T23:02:15.000Z</published>
     <updated>2017-11-25T09:28:56.978Z</updated>
     
@@ -252,21 +252,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.luofeng.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://www.luofeng.tk/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="android" scheme="http://www.luofeng.com/tags/android/"/>
+      <category term="android" scheme="http://www.luofeng.tk/tags/android/"/>
     
-      <category term="笔记" scheme="http://www.luofeng.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://www.luofeng.tk/tags/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="源码" scheme="http://www.luofeng.com/tags/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://www.luofeng.tk/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>瞎子</title>
-    <link href="http://www.luofeng.com/2016/08/13/xia%20zi/"/>
-    <id>http://www.luofeng.com/2016/08/13/xia zi/</id>
+    <link href="http://www.luofeng.tk/2016/08/13/xia%20zi/"/>
+    <id>http://www.luofeng.tk/2016/08/13/xia zi/</id>
     <published>2016-08-12T22:21:01.000Z</published>
     <updated>2017-11-25T09:27:38.609Z</updated>
     
@@ -281,17 +281,17 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://www.luofeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="随笔" scheme="http://www.luofeng.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>由零开始</title>
-    <link href="http://www.luofeng.com/2016/07/24/you%20ling%20kai%20shi/"/>
-    <id>http://www.luofeng.com/2016/07/24/you ling kai shi/</id>
+    <link href="http://www.luofeng.tk/2016/07/24/you%20ling%20kai%20shi/"/>
+    <id>http://www.luofeng.tk/2016/07/24/you ling kai shi/</id>
     <published>2016-07-24T10:56:14.000Z</published>
     <updated>2017-11-25T09:27:31.778Z</updated>
     
@@ -306,17 +306,17 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://www.luofeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="随笔" scheme="http://www.luofeng.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>我为什么活着</title>
-    <link href="http://www.luofeng.com/2016/07/15/wo%20wei%20shen%20me%20huo%20zhe/"/>
-    <id>http://www.luofeng.com/2016/07/15/wo wei shen me huo zhe/</id>
+    <link href="http://www.luofeng.tk/2016/07/15/wo%20wei%20shen%20me%20huo%20zhe/"/>
+    <id>http://www.luofeng.tk/2016/07/15/wo wei shen me huo zhe/</id>
     <published>2016-07-14T18:11:30.000Z</published>
     <updated>2017-11-25T09:27:45.942Z</updated>
     
@@ -331,10 +331,10 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://www.luofeng.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="随笔" scheme="http://www.luofeng.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://www.luofeng.tk/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
